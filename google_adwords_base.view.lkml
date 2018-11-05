@@ -4,12 +4,12 @@ view: google_adwords_base {
   dimension: _date {
     hidden: yes
     type: date_raw
-    sql: CAST(${TABLE}.date AS DATE) ;;
+    sql: TO_DATE(${TABLE}.date) ;;
   }
 
   dimension: date_string {
     hidden: yes
-    sql: CAST(${TABLE}.date AS STRING) ;;
+    sql: TO_CHAR(${TABLE}.date) ;;
   }
 
   dimension: latest {
@@ -25,7 +25,7 @@ view: google_adwords_base {
 
   dimension: external_customer_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.external_customer_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.external_customer_id) ;;
   }
 
 }

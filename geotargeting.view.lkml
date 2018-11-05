@@ -19,7 +19,7 @@ view: geotargeting {
 
   dimension: criteria_id_string {
     type: number
-    sql: CAST(${TABLE}.Criteria_ID AS STRING) ;;
+    sql: TO_CHAR(${TABLE}.Criteria_ID) ;;
   }
 
   dimension: name {
@@ -44,7 +44,7 @@ view: geotargeting {
 
   dimension: is_us_state {
     type: yesno
-    sql: ${country_code} = "US" AND ${target_type} = "State" ;;
+    sql: ${country_code} = 'US' AND ${target_type} = 'State' ;;
   }
 
   dimension: state {
@@ -55,7 +55,7 @@ view: geotargeting {
 
   dimension: is_us_postal_code {
     type: yesno
-    sql: ${country_code} = "US" AND ${target_type} = "Postal Code" ;;
+    sql: ${country_code} = 'US' AND ${target_type} = 'Postal Code' ;;
   }
 
   dimension: postal_code {

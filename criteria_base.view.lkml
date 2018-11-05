@@ -120,7 +120,7 @@ view: criteria_base {
   dimension: status_active {
     hidden: yes
     type: yesno
-    sql: ${status} = "enabled" ;;
+    sql: ${status} = 'enabled' ;;
   }
 
   dimension: tracking_url_template {
@@ -134,10 +134,10 @@ view: criteria_base {
   dimension: key_base {
     hidden: yes
     sql: CONCAT(
-      CAST(${external_customer_id} AS STRING), "-",
-      CAST(${campaign_id} AS STRING), "-",
-      CAST(${ad_group_id} AS STRING), "-",
-      CAST(${criterion_id} AS STRING)) ;;
+      TO_CHAR(${external_customer_id}), '-',
+      TO_CHAR(${campaign_id}), '-',
+      TO_CHAR(${ad_group_id}), '-',
+      TO_CHAR(${criterion_id})) ;;
   }
 
   measure: count {
