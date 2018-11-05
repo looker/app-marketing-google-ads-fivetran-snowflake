@@ -129,7 +129,7 @@ view: campaign_adapter {
   dimension: status_active {
     hidden: yes
     type: yesno
-    sql: ${campaign_status} = "enabled" ;;
+    sql: ${campaign_status} = 'enabled' ;;
   }
 
   dimension: campaign_tablet_bid_modifier {
@@ -156,7 +156,7 @@ view: campaign_adapter {
       year
     ]
     convert_tz: no
-    sql: (TIMESTAMP(${TABLE}.end_date)) ;;
+    sql: (CAST(${TABLE}.end_date as TIMESTAMP)) ;;
   }
 
   dimension: enhanced_cpc_enabled {
@@ -213,7 +213,7 @@ view: campaign_adapter {
       year
     ]
     convert_tz: no
-    sql: (TIMESTAMP(${TABLE}.start_date)) ;;
+    sql: (CAST(${TABLE}.start_date as TIMESTAMP)) ;;
   }
 
   dimension: tracking_url_template {

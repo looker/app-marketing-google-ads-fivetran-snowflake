@@ -19,7 +19,7 @@ view: hour_base {
 
   dimension: hour_of_day_string {
     hidden: yes
-    sql: CAST(${TABLE}.hour_of_day AS STRING) ;;
+    sql: TO_CHAR(${TABLE}.hour_of_day) ;;
   }
 }
 
@@ -117,10 +117,10 @@ view: ad_impressions_adapter_base {
   dimension: account_primary_key {
     hidden: yes
     sql: concat(
-      ${date_string}, "|",
-      ${external_customer_id_string}, "|",
-      ${ad_network_type1},  "|",
-      ${ad_network_type2}, "|",
+      ${date_string}, '|',
+      ${external_customer_id_string}, '|',
+      ${ad_network_type1},  '|',
+      ${ad_network_type2}, '|',
       ${device}) ;;
   }
 
@@ -249,7 +249,7 @@ view: ad_impressions_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${account_primary_key}, "|", ${hour_of_day_string}) ;;
+    sql: concat(${account_primary_key}, '|', ${hour_of_day_string}) ;;
   }
 }
 
@@ -293,7 +293,7 @@ view: ad_impressions_campaign_adapter_base {
 
   dimension: campaign_primary_key {
     hidden: yes
-    sql: concat(${account_primary_key}, "|", ${campaign_id_string}) ;;
+    sql: concat(${account_primary_key}, '|', ${campaign_id_string}) ;;
   }
 
   dimension: primary_key {
@@ -314,7 +314,7 @@ view: ad_impressions_campaign_adapter_base {
 
   dimension: campaign_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.campaign_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.campaign_id ) ;;
   }
 }
 
@@ -334,7 +334,7 @@ view: ad_impressions_campaign_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${campaign_primary_key}, "|", ${hour_of_day_string}) ;;
+    sql: concat(${campaign_primary_key}, '|', ${hour_of_day_string}) ;;
   }
 }
 
@@ -380,7 +380,7 @@ view: ad_impressions_ad_group_adapter_base {
 
   dimension: ad_group_primary_key {
     hidden: yes
-    sql: concat(${campaign_primary_key}, "|", ${ad_group_id_string}) ;;
+    sql: concat(${campaign_primary_key}, '|', ${ad_group_id_string}) ;;
   }
 
   dimension: primary_key {
@@ -396,7 +396,7 @@ view: ad_impressions_ad_group_adapter_base {
 
   dimension: ad_group_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.ad_group_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.ad_group_id) ;;
   }
 
   dimension: base_ad_group_id {
@@ -421,7 +421,7 @@ view: ad_impressions_ad_group_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${ad_group_primary_key}, "|", ${hour_of_day_string}) ;;
+    sql: concat(${ad_group_primary_key}, '|', ${hour_of_day_string}) ;;
   }
 }
 
@@ -440,7 +440,7 @@ view: ad_impressions_keyword_adapter {
 
   dimension: keyword_primary_key {
     hidden: yes
-    sql: concat(${ad_group_primary_key}, "|", ${criterion_id_string}, "|", ${slot}) ;;
+    sql: concat(${ad_group_primary_key}, '|', ${criterion_id_string}, '|', ${slot}) ;;
   }
 
   dimension: primary_key {
@@ -456,7 +456,7 @@ view: ad_impressions_keyword_adapter {
 
   dimension: criterion_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.id) ;;
   }
 
   dimension: slot {
@@ -498,7 +498,7 @@ view: ad_impressions_ad_adapter {
 
   dimension: ad_primary_key {
     hidden: yes
-    sql: concat(${keyword_primary_key}, "|", ${creative_id_string}, "|", ${is_negative_string}) ;;
+    sql: concat(${keyword_primary_key}, '|', ${creative_id_string}, '|', ${is_negative_string}) ;;
   }
 
   dimension: primary_key {
@@ -524,7 +524,7 @@ view: ad_impressions_ad_adapter {
 
   dimension: creative_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.id) ;;
   }
 
   dimension: is_negative {
@@ -535,7 +535,7 @@ view: ad_impressions_ad_adapter {
 
   dimension: is_negative_string {
     hidden: yes
-    sql: CAST(${TABLE}.is_negative AS STRING) ;;
+    sql: TO_CHAR(${TABLE}.is_negative) ;;
   }
 }
 
@@ -546,19 +546,19 @@ view: ad_impressions_ad_conversion_adapter {
   dimension: ad_conversion_primary_key {
     hidden: yes
     sql: concat(
-      ${date_string}, "|",
-      ${external_customer_id_string}, "|",
-      ${ad_network_type1}, "|",
-      ${ad_network_type2}, "|",
-      ${device}, "|",
-      ${campaign_id_string}, "|",
-      ${ad_group_id_string}, "|",
-      ${criterion_id_string}, "|",
-      ${slot}, "|",
-      ${creative_id_string}, "|",
-      ${is_negative_string}, "|",
-      ${conversion_category_name}, "|",
-      ${conversion_tracker_id}, "|",
+      ${date_string}, '|',
+      ${external_customer_id_string}, '|',
+      ${ad_network_type1}, '|',
+      ${ad_network_type2}, '|',
+      ${device}, '|',
+      ${campaign_id_string}, '|',
+      ${ad_group_id_string}, '|',
+      ${criterion_id_string}, '|',
+      ${slot}, '|',
+      ${creative_id_string}, '|',
+      ${is_negative_string}, '|',
+      ${conversion_category_name}, '|',
+      ${conversion_tracker_id}, '|',
       ${conversion_type_name},) ;;
   }
 
@@ -580,7 +580,7 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: campaign_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.campaign_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.campaign_id) ;;
   }
 
   dimension: ad_group_id {
@@ -590,7 +590,7 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: ad_group_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.ad_group_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.ad_group_id) ;;
   }
 
   dimension: base_ad_group_id {
@@ -605,7 +605,7 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: criterion_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.criterion_id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.criterion_id) ;;
   }
 
   dimension: slot {
@@ -622,7 +622,7 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: is_negative_string {
     hidden: yes
-    sql: CAST(${TABLE}.is_negative AS STRING) ;;
+    sql: TO_CHAR(${TABLE}.is_negative ) ;;
   }
 
   dimension: creative_id {
@@ -632,7 +632,7 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: creative_id_string {
     hidden: yes
-    sql: CAST(${TABLE}.id as STRING) ;;
+    sql: TO_CHAR(${TABLE}.id) ;;
   }
 
   dimension: ad_network_type1 {
@@ -917,7 +917,7 @@ view: ad_impressions_video_adapter {
 
   dimension: ad_group_id_string {
     hidden: yes
-    sql: CAST(${ad_group_id} as STRING) ;;
+    sql: TO_CHAR(${ad_group_id}) ;;
   }
 
   dimension: ad_network_type1 {
@@ -936,7 +936,7 @@ view: ad_impressions_video_adapter {
 
   dimension: campaign_id_string {
     hidden: yes
-    sql: CAST(${campaign_id} as STRING) ;;
+    sql: TO_CHAR(${campaign_id}) ;;
   }
 
   dimension: clicks {
@@ -967,7 +967,7 @@ view: ad_impressions_video_adapter {
 
   dimension: creative_id_string {
     hidden: yes
-    sql: CAST(${creative_id} as STRING) ;;
+    sql: TO_CHAR(${creative_id}) ;;
   }
 
   dimension: creative_status {
