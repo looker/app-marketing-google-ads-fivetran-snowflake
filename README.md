@@ -1,6 +1,6 @@
 # Google Ads
 
-LookML files for a schema mapping on BigQuery for google Ads compatible with [Fivetran's Google Ads ETL](https://fivetran.com/docs/applications/google-adwords). This is designed to work with a ETL agnostic [Google Ads block](https://github.com/looker/app-marketing-google-ads).
+LookML files for a schema mapping on Snowflake for google Ads compatible with [Fivetran's Google Ads ETL](https://fivetran.com/docs/applications/google-adwords). This is designed to work with a ETL agnostic [Google Ads block](https://github.com/looker/app-marketing-google-ads).
 
 ## To use this block, you will need to:
 
@@ -29,7 +29,7 @@ manifest.lkml
 ```LookML
 
 remote_dependency: app-marketing-google-ads-adapter {
-  url: "git://github.com/looker/app-marketing-google-ads-fivetran-bigquery"
+  url: "git://github.com/looker/app-marketing-google-ads-fivetran-snowflake"
   ref: "b491583a3ac3a1125e535b5c5855bd56e9aa41a5"
 }
 
@@ -38,7 +38,7 @@ remote_dependency: app-marketing-google-ads {
   ref: "557fa52e9fee322d9a601ee5bf009cf929ef0261"
 }```
 
-Note that the `ref:` should point to the latest commit in each respective repo [google-ads-fivetran-bigquery](https://github.com/looker/app-marketing-google-ads-fivetran-bigquery/commits/master) and [google-ads](https://github.com/looker/app-marketing-google-ads/commits/master).
+Note that the `ref:` should point to the latest commit in each respective repo [google-ads-fivetran-bigquery](https://github.com/looker/app-marketing-google-ads-fivetran-snowflake/commits/master) and [google-ads](https://github.com/looker/app-marketing-google-ads/commits/master).
 
 2. Create a `google_ads_config` view that is assumed by this project. This configuration requires a  file
 
