@@ -279,10 +279,10 @@ view: ad_adapter {
   dimension: creative {
     type: string
     sql: SUBSTR(CONCAT(
-      COALESCE(CONCAT(${headline}, '\n'),'')
-      , COALESCE(CONCAT(${headline_part1}, '\n'),'')
-      , COALESCE(CONCAT(${headline_part2}, '\n'),'')
-      ), 0, 50) ;;
+      COALESCE(CONCAT(ad.headline, '\n'),'')
+      , CONCAT(COALESCE(CONCAT(ad.headline_part_1, '\n'),'')
+      , COALESCE(CONCAT(ad.headline_part_2, '\n'),'')))
+      , 0, 50) ;;
     link: {
       url: "https://adwords.google.com/aw/ads?campaignId={{ campaign_id._value }}&adGroupId={{ ad_group_id._value }}"
       icon_url: "https://www.gstatic.com/awn/awsm/brt/awn_awsm_20171108_RC00/aw_blend/favicon.ico"
