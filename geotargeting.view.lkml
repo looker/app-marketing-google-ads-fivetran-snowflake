@@ -49,7 +49,7 @@ view: geotargeting {
   dimension: state {
     map_layer_name: us_states
     type: string
-    sql: IF(${is_us_state}, ${name}, NULL) ;;
+    sql: IFF(${is_us_state}, ${name}, NULL) ;;
   }
 
   dimension: is_us_postal_code {
@@ -60,6 +60,6 @@ view: geotargeting {
   dimension: postal_code {
     map_layer_name: us_zipcode_tabulation_areas
     type: string
-    sql: IF(${is_us_postal_code}, ${name}, NULL) ;;
+    sql: IFF(${is_us_postal_code}, ${name}, NULL) ;;
   }
 }
