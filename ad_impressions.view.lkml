@@ -79,7 +79,7 @@ explore: ad_impressions_adapter {
   extends: [customer_join]
   from: ad_impressions_adapter
   view_name: fact
-  hidden: no
+  hidden: yes
   group_label: "Google AdWords"
   label: "AdWord Impressions"
   view_label: "Impressions"
@@ -115,7 +115,7 @@ view: ad_impressions_adapter_base {
   extends: [adwords_config, google_adwords_base, transformations_base, google_ad_metrics_base_adapter]
 
   dimension: account_primary_key {
-    hidden: no
+    hidden: yes
     sql:
       ${date_string} || '|' ||
       ${external_customer_id_string} || '|' ||
@@ -126,7 +126,7 @@ view: ad_impressions_adapter_base {
 
   dimension: primary_key {
     primary_key: yes
-    hidden: no
+    hidden: yes
     sql: ${account_primary_key} ;;
   }
 
