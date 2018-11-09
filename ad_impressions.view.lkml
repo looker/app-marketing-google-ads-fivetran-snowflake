@@ -116,12 +116,12 @@ view: ad_impressions_adapter_base {
 
   dimension: account_primary_key {
     hidden: yes
-    sql: concat(
-      ${date_string}, '|',
-      ${external_customer_id_string}, '|',
-      ${ad_network_type1},  '|',
-      ${ad_network_type2}, '|',
-      ${device}) ;;
+    sql:
+      ${date_string} || '|' ||
+      ${external_customer_id_string} || '|' ||
+      ${ad_network_type1} ||  '|' ||
+      ${ad_network_type2} || '|' ||
+      ${device} ;;
   }
 
   dimension: primary_key {
@@ -249,7 +249,7 @@ view: ad_impressions_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${account_primary_key}, '|', ${hour_of_day_string}) ;;
+    sql: ${account_primary_key} || '|' || ${hour_of_day_string} ;;
   }
 }
 
@@ -293,7 +293,7 @@ view: ad_impressions_campaign_adapter_base {
 
   dimension: campaign_primary_key {
     hidden: yes
-    sql: concat(${account_primary_key}, '|', ${campaign_id_string}) ;;
+    sql: ${account_primary_key} || '|' || ${campaign_id_string} ;;
   }
 
   dimension: primary_key {
@@ -334,7 +334,7 @@ view: ad_impressions_campaign_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${campaign_primary_key}, '|', ${hour_of_day_string}) ;;
+    sql: ${campaign_primary_key} || '|' || ${hour_of_day_string} ;;
   }
 }
 
@@ -380,7 +380,7 @@ view: ad_impressions_ad_group_adapter_base {
 
   dimension: ad_group_primary_key {
     hidden: yes
-    sql: concat(${campaign_primary_key}, '|', ${ad_group_id_string}) ;;
+    sql: ${campaign_primary_key} || '|' || ${ad_group_id_string} ;;
   }
 
   dimension: primary_key {
@@ -421,7 +421,7 @@ view: ad_impressions_ad_group_hour_adapter {
   dimension: primary_key {
     primary_key: yes
     hidden: yes
-    sql: concat(${ad_group_primary_key}, '|', ${hour_of_day_string}) ;;
+    sql: ${ad_group_primary_key} || '|' || ${hour_of_day_string} ;;
   }
 }
 
@@ -440,7 +440,7 @@ view: ad_impressions_keyword_adapter {
 
   dimension: keyword_primary_key {
     hidden: yes
-    sql: concat(${ad_group_primary_key}, '|', ${criterion_id_string}, '|', ${slot}) ;;
+    sql: ${ad_group_primary_key} ||  '|' || ${criterion_id_string} || '|' || ${slot} ;;
   }
 
   dimension: primary_key {
@@ -498,7 +498,7 @@ view: ad_impressions_ad_adapter {
 
   dimension: ad_primary_key {
     hidden: yes
-    sql: concat(${keyword_primary_key}, '|', ${creative_id_string}, '|', ${is_negative_string}) ;;
+    sql: ${keyword_primary_key} || '|' || ${creative_id_string} || '|' || ${is_negative_string} ;;
   }
 
   dimension: primary_key {
@@ -545,21 +545,21 @@ view: ad_impressions_ad_conversion_adapter {
 
   dimension: ad_conversion_primary_key {
     hidden: yes
-    sql: concat(
-      ${date_string}, '|',
-      ${external_customer_id_string}, '|',
-      ${ad_network_type1}, '|',
-      ${ad_network_type2}, '|',
-      ${device}, '|',
-      ${campaign_id_string}, '|',
-      ${ad_group_id_string}, '|',
-      ${criterion_id_string}, '|',
-      ${slot}, '|',
-      ${creative_id_string}, '|',
-      ${is_negative_string}, '|',
-      ${conversion_category_name}, '|',
-      ${conversion_tracker_id}, '|',
-      ${conversion_type_name},) ;;
+    sql:
+      ${date_string} || '|' ||
+      ${external_customer_id_string} || '|' ||
+      ${ad_network_type1} || '|' ||
+      ${ad_network_type2} || '|' ||
+      ${device} || '|' ||
+      ${campaign_id_string} || '|' ||
+      ${ad_group_id_string} || '|' ||
+      ${criterion_id_string} || '|' ||
+      ${slot} || '|' ||
+      ${creative_id_string} || '|' ||
+      ${is_negative_string} || '|' ||
+      ${conversion_category_name} || '|' ||
+      ${conversion_tracker_id} || '|' ||
+      ${conversion_type_name} ;;
   }
 
   dimension: primary_key {

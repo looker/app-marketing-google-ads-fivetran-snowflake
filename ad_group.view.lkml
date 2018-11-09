@@ -151,11 +151,6 @@ view: ad_group_adapter {
     sql: ${TABLE}.cpc_bid ;;
   }
 
-  dimension: cpm_bid {
-    type: number
-    sql: ${TABLE}.cpm_bid ;;
-  }
-
   dimension: cpv_bid {
     type: string
     sql: ${TABLE}.cpv_bid ;;
