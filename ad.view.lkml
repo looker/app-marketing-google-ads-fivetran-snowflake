@@ -122,13 +122,13 @@ view: ad_adapter {
   dimension: creative_final_urls_clean {
     hidden: yes
     type: string
-    sql: REGEXP_EXTRACT(${creative_final_urls}, r'\"([^\"]*)\"') ;;
+    sql: REGEXP_SUBSTR(${creative_final_urls}, '\"([^\"]*)\"') ;;
   }
 
   dimension: creative_final_urls_domain_path {
     label: "Creative Final Urls"
     type: string
-    sql: SUBSTR(REGEXP_EXTRACT(${creative_final_urls_clean}, r'^https?://(.*)\?'), 0, 50) ;;
+    sql: SUBSTR(REGEXP_SUBSTR(${creative_final_urls_clean}, '^https?://(.*)\?'), 0, 50) ;;
     link: {
       url: "{{ creative_final_urls_clean }}"
       label: "Landing Page"

@@ -133,11 +133,11 @@ view: criteria_base {
 
   dimension: key_base {
     hidden: yes
-    sql: CONCAT(
-      TO_CHAR(${external_customer_id}), '-',
-      TO_CHAR(${campaign_id}), '-',
-      TO_CHAR(${ad_group_id}), '-',
-      TO_CHAR(${criterion_id})) ;;
+    sql:
+      TO_CHAR(${external_customer_id}) || '-' ||
+      TO_CHAR(${campaign_id}) || '-' ||
+      TO_CHAR(${ad_group_id}) || '-' ||
+      TO_CHAR(${criterion_id}) ;;
   }
 
   measure: count {
