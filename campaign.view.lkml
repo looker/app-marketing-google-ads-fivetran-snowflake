@@ -123,13 +123,13 @@ view: campaign_adapter {
   dimension: campaign_status {
     hidden: yes
     type: string
-    sql: ${TABLE}.campaign_status ;;
+    sql: '';;
   }
 
   dimension: status_active {
     hidden: yes
     type: yesno
-    sql: ${campaign_status} = 'enabled' ;;
+    sql: 1 = 1 ;;
   }
 
   dimension: campaign_tablet_bid_modifier {
