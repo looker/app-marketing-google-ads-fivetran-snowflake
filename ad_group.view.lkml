@@ -91,13 +91,13 @@ view: ad_group_adapter {
   dimension: ad_group_status {
     hidden: yes
     type: string
-    sql: ${TABLE}.ad_group_status ;;
+    sql: '';;
   }
 
   dimension: status_active {
     hidden: yes
     type: yesno
-    sql: ${ad_group_status} = 'enabled' ;;
+    sql: 1=1 ;;
   }
 
   dimension: ad_group_tablet_bid_modifier {
